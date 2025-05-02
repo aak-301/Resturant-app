@@ -15,19 +15,13 @@ import {
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 
-interface Meal {
-  idMeal: string;
-  strMeal: string;
-  strMealThumb: string;
-}
-
-interface MealDetails extends Meal {
-  strCategory: string;
-  strArea: string;
-  strInstructions: string;
-  strYoutube: string;
-  strTags: string;
-}
+// Import API services and types
+import {
+  getFoodList,
+  getFoodDetails,
+  handleApiError,
+} from "../api/foodService";
+import { Meal, MealDetails } from "../api/types";
 
 // Card size variations
 const sizeVariants = [
@@ -73,6 +67,7 @@ const FoodList: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [selectedMeal, setSelectedMeal] = useState<MealDetails | null>(null);
   const [dialogOpen, setDialogOpen] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));
@@ -80,11 +75,12 @@ const FoodList: React.FC = () => {
   useEffect(() => {
     const fetchMeals = async () => {
       try {
-        const response = await fetch("http://localhost:5000/food-list");
-        const data = await response.json();
-        setFoodList(data.meals || []);
-      } catch (error) {
-        console.error("Error fetching food list:", error);
+        setLoading(true);
+        setError(null);
+        const response = await getFoodList();
+        setFoodList(response.meals || []);
+      } catch (err) {
+        setError(handleApiError(err));
       } finally {
         setLoading(false);
       }
@@ -93,14 +89,18 @@ const FoodList: React.FC = () => {
     fetchMeals();
   }, []);
 
-  const fetchMealDetails = async (id: string) => {
+  const handleFetchMealDetails = async (id: string) => {
     try {
-      const response = await fetch(`http://localhost:5000/food-details/${id}`);
-      const data = await response.json();
-      setSelectedMeal(data.meals[0]);
-      setDialogOpen(true);
-    } catch (error) {
-      console.error("Failed to fetch meal details", error);
+      setError(null);
+      const response = await getFoodDetails(id);
+      if (response.meals && response.meals.length > 0) {
+        setSelectedMeal(response.meals[0]);
+        setDialogOpen(true);
+      } else {
+        setError("Meal details not found");
+      }
+    } catch (err) {
+      setError(handleApiError(err));
     }
   };
 
@@ -123,6 +123,27 @@ const FoodList: React.FC = () => {
         sx={{ mt: 10 }}
       >
         <CircularProgress />
+      </Box>
+    );
+  }
+
+  if (error) {
+    return (
+      <Box textAlign="center" mt={10}>
+        <Typography color="error" variant="h6">
+          {error}
+        </Typography>
+        <Typography variant="body1" mt={2}>
+          Please check your connection or try again later.
+        </Typography>
+      </Box>
+    );
+  }
+
+  if (foodList.length === 0) {
+    return (
+      <Box textAlign="center" mt={10}>
+        <Typography variant="h6">No meals found</Typography>
       </Box>
     );
   }
@@ -163,7 +184,7 @@ const FoodList: React.FC = () => {
               }}
             >
               <Card
-                onClick={() => fetchMealDetails(meal.idMeal)}
+                onClick={() => handleFetchMealDetails(meal.idMeal)}
                 sx={{
                   height: "100%",
                   cursor: "pointer",

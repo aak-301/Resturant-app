@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: seafood-menu-frontend
+    env: static
+    buildCommand: npm run install-and-build
+    staticPublishPath: ./build
+    envVars:
+      - key: REACT_APP_API_URL
+        fromService:
+          type: web
+          name: seafood-menu-backend
+          envVarKey: RENDER_EXTERNAL_URL
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
