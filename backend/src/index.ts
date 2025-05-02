@@ -5,7 +5,14 @@ import cors from "cors";
 const app = express();
 const PORT = 5000;
 
-app.use(cors()); // Enable CORS for frontend
+// CORS configuration
+const corsOptions = {
+  origin: process.env.CORS_ORIGIN || "http://localhost:3000",
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
 
 // Health check
 app.get("/", (_req: Request, res: Response) => {

@@ -2,11 +2,16 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "",
-  "main": "index.ts",
+  "main": "dist/index.js",
+  "engines": {
+    "node": ">=16.0.0"
+  },
   "scripts": {
     "dev": "nodemon --watch src --ext ts --exec ts-node src/index.ts",
     "build": "tsc",
-    "start": "node dist/index.js"
+    "start": "node dist/index.js",
+    "install-and-build": "npm install && npm run build",
+    "render-start": "node dist/index.js"
   },
   "author": "",
   "license": "ISC",
@@ -15,7 +20,7 @@
     "axios": "^1.9.0",
     "cors": "^2.8.5",
     "express": "^5.1.0",
-    "myapp": "file:.."
+    "typescript": "^5.8.3"
   },
   "devDependencies": {
     "@types/axios": "^0.9.36",
@@ -23,7 +28,6 @@
     "@types/express": "^5.0.1",
     "@types/node": "^22.15.3",
     "nodemon": "^3.1.10",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.8.3"
+    "ts-node": "^10.9.2"
   }
 }
