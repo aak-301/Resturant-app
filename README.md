@@ -1,13 +1,31 @@
-I made this app just for fun.
-I will add a lot of features.
+# 🍽️ Restaurant App
 
-I am building this project because one of my friend denied to let me contribute in his repository.
-So I made a project of my own.
+I made this app just for fun and plan to add many exciting features in the future.
 
-# App setup
+This project was born after a friend declined my request to contribute to his repository — so I decided to build something of my own, from scratch.
 
-1. Stay in root directory
-2. Run `install:all`: To install all dependencies in both frontend and backend
-3. Run `start:all`: To start the server for production
-4. Run `start:frontend`: To start the react app on devlopment mode
-5. Run `start:backend`: To start the backend in devlopment mode
+### 🚀 Live Demo
+
+[Restaurant App](https://resturant-app-1-czad.onrender.com/)
+
+---
+
+## 🛠️ App Setup
+
+1. Stay in the root directory.
+2. Run `install:all` – Installs all dependencies for both frontend and backend.
+3. Run `start:all` – Starts both frontend and backend in production mode.
+4. Run `start:frontend` – Runs the React app in development mode.
+5. Run `start:backend` – Runs the backend server in development mode.
+
+---
+
+## 🤝 Contributing
+
+If you'd like to contribute to this project, follow these steps:
+
+1. **Fork** the repository.
+2. **Clone** your fork:
+   ```bash
+   git clone https://github.com/your-username/restaurant-app.git
+   ```
