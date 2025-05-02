@@ -1,50 +1,43 @@
-// backend/src/index.ts
-import express from "express";
-import cors from "cors";
+import express, { Request, Response } from "express";
 import axios from "axios";
+import cors from "cors";
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = 5000;
 
-// CORS configuration
-const corsOptions = {
-  origin:
-    process.env.NODE_ENV === "production"
-      ? process.env.CORS_ORIGIN || "https://resturant-frontend.onrender.com"
-      : "http://localhost:3000",
-  methods: ["GET", "POST", "PUT", "DELETE"],
-  credentials: true,
-};
+app.use(cors()); // Enable CORS for frontend
 
-app.use(cors(corsOptions));
-app.use(express.json());
+// Health check
+app.get("/", (_req: Request, res: Response) => {
+  res.send("API is running!");
+});
 
-// API endpoints
-app.get("/food-list", async (req, res) => {
+// Get food list (Seafood category)
+app.get("/food-list", async (_req: Request, res: Response) => {
   try {
     const response = await axios.get(
       "https://www.themealdb.com/api/json/v1/1/filter.php?c=Seafood"
     );
-    res.json(response.data);
+    res.json(response.data); // Send the whole "meals" array
   } catch (error) {
-    console.error("Error fetching food list:", error);
     res.status(500).json({ error: "Failed to fetch food list" });
   }
 });
 
-app.get("/food-details/:id", async (req, res) => {
+// Get food details by ID
+app.get("/food-details/:id", async (req: Request, res: Response) => {
+  const mealId = req.params.id;
+
   try {
-    const id = req.params.id;
     const response = await axios.get(
-      `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`
+      `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealId}`
     );
-    res.json(response.data);
+    res.json(response.data); // Send the full meal details
   } catch (error) {
-    console.error("Error fetching food details:", error);
     res.status(500).json({ error: "Failed to fetch food details" });
   }
 });
 
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+  console.log(`Backend running on http://localhost:${PORT}`);
 });

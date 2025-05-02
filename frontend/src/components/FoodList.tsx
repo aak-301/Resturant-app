@@ -80,11 +80,7 @@ const FoodList: React.FC = () => {
   useEffect(() => {
     const fetchMeals = async () => {
       try {
-        // Use environment variable or production URL
-        const API_URL =
-          process.env.REACT_APP_API_URL ||
-          "https://resturant-backend.onrender.com";
-        const response = await fetch(`${API_URL}/food-list`);
+        const response = await fetch("http://localhost:5000/food-list");
         const data = await response.json();
         setFoodList(data.meals || []);
       } catch (error) {
@@ -99,11 +95,7 @@ const FoodList: React.FC = () => {
 
   const fetchMealDetails = async (id: string) => {
     try {
-      // Use environment variable or production URL
-      const API_URL =
-        process.env.REACT_APP_API_URL ||
-        "https://resturant-backend.onrender.com";
-      const response = await fetch(`${API_URL}/food-details/${id}`);
+      const response = await fetch(`http://localhost:5000/food-details/${id}`);
       const data = await response.json();
       setSelectedMeal(data.meals[0]);
       setDialogOpen(true);
