@@ -10,8 +10,13 @@ services:
         value: production
       - key: PORT
         value: 10000
+      - key: CORS_ORIGIN
+        value: https://resturant-frontend.onrender.com
 
   - type: static
     name: resturant-frontend
     buildCommand: cd frontend && npm install && npm run build
     staticPublishPath: frontend/build
+    envVars:
+      - key: REACT_APP_API_URL
+        value: https://resturant-backend.onrender.com
