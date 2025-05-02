@@ -2,6 +2,9 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": ">=16.0.0"
+  },
   "dependencies": {
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
@@ -22,15 +25,16 @@
     "react-scripts": "5.0.1",
     "typescript": "^4.9.5",
     "web-vitals": "^2.1.4",
-    "serve": "serve -s build",
-    "install-and-build": "npm install && npm run build",
-    "render-start": "serve -s build"
+    "serve": "^14.2.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "serve-build": "serve -s build",
+    "install-and-build": "npm install && npm run build",
+    "render-start": "npx serve -s build"
   },
   "eslintConfig": {
     "extends": [

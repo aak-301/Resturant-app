@@ -2,7 +2,7 @@ services:
   - type: web
     name: seafood-menu-frontend
     env: static
-    buildCommand: npm run install-and-build
+    buildCommand: npm install && npm run build
     staticPublishPath: ./build
     envVars:
       - key: REACT_APP_API_URL
