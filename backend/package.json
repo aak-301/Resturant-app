@@ -12,8 +12,9 @@
     "start": "node dist/index.js",
     "install-and-build": "npm install && npm run build",
     "render-start": "node dist/index.js",
-    "migrate": "ts-node src/utils/database/migrate.ts",
-    "seed": "ts-node src/utils/database/seed.ts"
+    "setup-db": "ts-node setup-database.ts",
+    "migrate": "ts-node -e \"import('./src/utils/database/migrate').then(m => m.migrationRunner.runMigrations())\"",
+    "seed": "ts-node -e \"import('./src/utils/database/seed').then(s => s.seedRunner.runSeeds())\""
   },
   "keywords": [
     "restaurant",

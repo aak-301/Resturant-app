@@ -11,7 +11,7 @@ services:
       - key: PORT
         value: 10000
       - key: CORS_ORIGIN
-        value: https://resturant-frontend.onrender.com
+        value: https://resturant-app-1-x2qd.onrender.com
 
   - type: static
     name: resturant-frontend
@@ -19,4 +19,4 @@ services:
     staticPublishPath: frontend/build
     envVars:
       - key: REACT_APP_API_URL
-        value: https://resturant-backend.onrender.com
+        value: https://resturant-app-uicq.onrender.com
