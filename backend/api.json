@@ -1,0 +1,755 @@
+{
+  "info": {
+    "name": "Restaurant Backend APIs",
+    "description": "Complete API collection for Restaurant Multi-Platform App Backend",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_postman_id": "restaurant-backend-apis",
+    "version": {
+      "major": 1,
+      "minor": 0,
+      "patch": 0
+    }
+  },
+  "item": [
+    {
+      "name": "System APIs",
+      "item": [
+        {
+          "name": "Health Check",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/health",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "health"
+              ]
+            },
+            "description": "Check server health and status"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "External APIs (TheMealDB)",
+      "item": [
+        {
+          "name": "Get Food List (Legacy)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/food-list",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "food-list"
+              ]
+            },
+            "description": "Get seafood list from TheMealDB (legacy endpoint)"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Food Details (Legacy)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/food-details/52772",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "food-details",
+                "52772"
+              ]
+            },
+            "description": "Get food details by ID from TheMealDB (legacy endpoint)"
+          },
+          "response": []
+        },
+        {
+          "name": "Get External Food List",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/external/food-list",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "external",
+                "food-list"
+              ]
+            },
+            "description": "Get seafood list from TheMealDB with enhanced error handling"
+          },
+          "response": []
+        },
+        {
+          "name": "Get External Food Details",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/external/food-details/52772",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "external",
+                "food-details",
+                "52772"
+              ]
+            },
+            "description": "Get food details by ID with enhanced error handling"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Food by Category",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/external/food-category/Chicken",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "external",
+                "food-category",
+                "Chicken"
+              ]
+            },
+            "description": "Get food items by category from TheMealDB"
+          },
+          "response": []
+        },
+        {
+          "name": "Search External Meals",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/external/search?q=chicken",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "external",
+                "search"
+              ],
+              "query": [
+                {
+                  "key": "q",
+                  "value": "chicken",
+                  "description": "Search query (2-100 characters)"
+                }
+              ]
+            },
+            "description": "Search meals in TheMealDB"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Restaurant APIs",
+      "item": [
+        {
+          "name": "Get All Restaurants",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/restaurants",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "restaurants"
+              ]
+            },
+            "description": "Get all active restaurants with their menu items"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Restaurant by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/restaurants/{{restaurantId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "restaurants",
+                "{{restaurantId}}"
+              ]
+            },
+            "description": "Get specific restaurant details by ID"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Restaurant Menu",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/restaurants/{{restaurantId}}/menu",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "restaurants",
+                "{{restaurantId}}",
+                "menu"
+              ]
+            },
+            "description": "Get restaurant menu organized by categories"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Restaurants by City",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/restaurants/city/Delhi",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "restaurants",
+                "city",
+                "Delhi"
+              ]
+            },
+            "description": "Get all restaurants in a specific city"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Restaurants by Cuisine",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/restaurants/cuisine/Italian",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "restaurants",
+                "cuisine",
+                "Italian"
+              ]
+            },
+            "description": "Get all restaurants serving a specific cuisine"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Category APIs",
+      "item": [
+        {
+          "name": "Get All Categories",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/categories",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "categories"
+              ]
+            },
+            "description": "Get all food categories with item counts"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Items by Category",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/categories/{{categoryId}}/items",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "categories",
+                "{{categoryId}}",
+                "items"
+              ]
+            },
+            "description": "Get all food items in a specific category"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Food Item APIs",
+      "item": [
+        {
+          "name": "Get Food Item by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/food-items/{{foodItemId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "food-items",
+                "{{foodItemId}}"
+              ]
+            },
+            "description": "Get specific food item with variants and details"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Search & Discovery APIs",
+      "item": [
+        {
+          "name": "Search Food Items - Text Search",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/search?q=pizza",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "search"
+              ],
+              "query": [
+                {
+                  "key": "q",
+                  "value": "pizza",
+                  "description": "Search query text"
+                }
+              ]
+            },
+            "description": "Search food items by text query"
+          },
+          "response": []
+        },
+        {
+          "name": "Search Food Items - Category Filter",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/search?category={{categoryId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "search"
+              ],
+              "query": [
+                {
+                  "key": "category",
+                  "value": "{{categoryId}}",
+                  "description": "Category ID to filter by"
+                }
+              ]
+            },
+            "description": "Search food items by category"
+          },
+          "response": []
+        },
+        {
+          "name": "Search Food Items - Diet Filter",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/search?diet=vegetarian",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "search"
+              ],
+              "query": [
+                {
+                  "key": "diet",
+                  "value": "vegetarian",
+                  "description": "Dietary preference (vegetarian, vegan, gluten_free, etc.)"
+                }
+              ]
+            },
+            "description": "Search food items by dietary preference"
+          },
+          "response": []
+        },
+        {
+          "name": "Search Food Items - Price Range",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/search?min_price=100&max_price=500",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "search"
+              ],
+              "query": [
+                {
+                  "key": "min_price",
+                  "value": "100",
+                  "description": "Minimum price filter"
+                },
+                {
+                  "key": "max_price",
+                  "value": "500",
+                  "description": "Maximum price filter"
+                }
+              ]
+            },
+            "description": "Search food items by price range"
+          },
+          "response": []
+        },
+        {
+          "name": "Search Food Items - Combined Filters",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/search?q=chicken&diet=gluten_free&min_price=200&max_price=600",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "search"
+              ],
+              "query": [
+                {
+                  "key": "q",
+                  "value": "chicken",
+                  "description": "Search text"
+                },
+                {
+                  "key": "diet",
+                  "value": "gluten_free",
+                  "description": "Dietary preference"
+                },
+                {
+                  "key": "min_price",
+                  "value": "200",
+                  "description": "Minimum price"
+                },
+                {
+                  "key": "max_price",
+                  "value": "600",
+                  "description": "Maximum price"
+                }
+              ]
+            },
+            "description": "Search with multiple filters combined"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Featured Items",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/featured?limit=10",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "featured"
+              ],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "10",
+                  "description": "Number of items to return (1-100, default: 20)"
+                }
+              ]
+            },
+            "description": "Get featured and popular food items"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Trending Items",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/trending?limit=15",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "trending"
+              ],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "15",
+                  "description": "Number of items to return (1-100, default: 20)"
+                }
+              ]
+            },
+            "description": "Get trending food items (most ordered recently)"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Test Scenarios",
+      "item": [
+        {
+          "name": "Error Test - Invalid Restaurant ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/restaurants/invalid-uuid",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "restaurants",
+                "invalid-uuid"
+              ]
+            },
+            "description": "Test error handling with invalid restaurant ID"
+          },
+          "response": []
+        },
+        {
+          "name": "Error Test - Empty Search Query",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/search",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "search"
+              ]
+            },
+            "description": "Test search with no parameters (should return featured items)"
+          },
+          "response": []
+        },
+        {
+          "name": "Error Test - Invalid Price Range",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/search?min_price=abc&max_price=xyz",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "search"
+              ],
+              "query": [
+                {
+                  "key": "min_price",
+                  "value": "abc",
+                  "description": "Invalid price value"
+                },
+                {
+                  "key": "max_price",
+                  "value": "xyz",
+                  "description": "Invalid price value"
+                }
+              ]
+            },
+            "description": "Test error handling with invalid price values"
+          },
+          "response": []
+        },
+        {
+          "name": "Error Test - Invalid Limit",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/featured?limit=200",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "featured"
+              ],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "200",
+                  "description": "Invalid limit (max 100)"
+                }
+              ]
+            },
+            "description": "Test error handling with invalid limit value"
+          },
+          "response": []
+        },
+        {
+          "name": "Error Test - External API Timeout",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/external/food-details/999999",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "external",
+                "food-details",
+                "999999"
+              ]
+            },
+            "description": "Test external API with non-existent ID"
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:5000",
+      "type": "string",
+      "description": "Base URL for the Restaurant Backend API"
+    },
+    {
+      "key": "restaurantId",
+      "value": "",
+      "type": "string",
+      "description": "Restaurant UUID - Get this from /api/restaurants endpoint"
+    },
+    {
+      "key": "categoryId",
+      "value": "",
+      "type": "string",
+      "description": "Category UUID - Get this from /api/categories endpoint"
+    },
+    {
+      "key": "foodItemId",
+      "value": "",
+      "type": "string",
+      "description": "Food Item UUID - Get this from any food endpoint"
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          "// Auto-set variables if needed",
+          "if (!pm.environment.get('baseUrl')) {",
+          "    pm.environment.set('baseUrl', 'http://localhost:5000');",
+          "}"
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          "// Basic response validation",
+          "pm.test('Status code should be successful', function () {",
+          "    pm.expect(pm.response.code).to.be.oneOf([200, 201, 204]);",
+          "});",
+          "",
+          "pm.test('Response should be JSON', function () {",
+          "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+          "});",
+          "",
+          "// Save IDs from responses for other requests",
+          "if (pm.response.code === 200) {",
+          "    const jsonData = pm.response.json();",
+          "    ",
+          "    // Save restaurant ID from restaurants list",
+          "    if (pm.request.url.toString().includes('/api/restaurants') && !pm.request.url.toString().includes('/menu')) {",
+          "        if (jsonData.data && jsonData.data.length > 0) {",
+          "            pm.environment.set('restaurantId', jsonData.data[0].id);",
+          "        }",
+          "    }",
+          "    ",
+          "    // Save category ID from categories list",
+          "    if (pm.request.url.toString().includes('/api/categories') && !pm.request.url.toString().includes('/items')) {",
+          "        if (jsonData.data && jsonData.data.length > 0) {",
+          "            pm.environment.set('categoryId', jsonData.data[0].id);",
+          "        }",
+          "    }",
+          "    ",
+          "    // Save food item ID from any food response",
+          "    if (jsonData.data && Array.isArray(jsonData.data) && jsonData.data.length > 0 && jsonData.data[0].id) {",
+          "        pm.environment.set('foodItemId', jsonData.data[0].id);",
+          "    }",
+          "}"
+        ]
+      }
+    }
+  ]
+}
